@@ -1,4 +1,4 @@
-# <img src="https://drive.google.com/file/d/1egTldsi2CBGn9nCR0ZKNZnV0lIu4JRcp/view?usp=share_link" width="40"> SOS-Water WP3 repository
+# <img src="https://drive.google.com/file/d/1egTldsi2CBGn9nCR0ZKNZnV0lIu4JRcp" width="40"> SOS-Water WP3 repository
 
 This is the repository for the WP3 contributions of the SOS-Water project. Currently this repository contains a draft for the data inventory for T3.1.
 

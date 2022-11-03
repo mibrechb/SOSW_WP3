@@ -1,0 +1,9 @@
+# <img src="https://drive.google.com/uc?id=1XN1lMrKKPZRqkko8NCM4IaoS5apzWAO1" width="40"> SOS-Water WP3 repository
+
+This is the repository for the WP3 contributions of the SOS-Water project. Currently this repository contains a draft for D3.1.
+
+## WP3 Overview
+
+| Task | Description                                     |
+|------|-------------------------------------------------|
+| T3.1 | Monitoring data inventory and database creation |

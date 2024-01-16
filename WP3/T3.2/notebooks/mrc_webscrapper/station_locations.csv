@@ -1,0 +1,244 @@
+id,name,river,latitude,longitude,country
+014501,Stung Treng,Mekong,13.545,106.017,Cambodia
+014901,Kratie,Mekong,12.24,105.987,Cambodia
+019801,Chroy Chang Var,Mekong,11.58,104.939,Cambodia
+019802,Kompong Cham,Mekong,11.909,105.388,Cambodia
+019806,Neak Luong,Mekong,11.261,105.284,Cambodia
+019901,Stung Slot,,11.325,105.284,Cambodia
+019910,Prek Koy,Prek Koy,11.838,104.988,Cambodia
+019911,Spean Tras,Prek Koy,11.901,104.936,Cambodia
+020101,Phnom Penh Port,Tonle Sap,11.575,104.923,Cambodia
+020102,Prek Kdam,Tonle Sap,11.813,104.804,Cambodia
+020103,Kg. Chhnang,Tonle Sap,12.251,104.686,Cambodia
+020106,Kg. Luong,Tonle Sap,12.575,104.215,Cambodia
+020108,Snoc Trou,Tonle Sap,12.521,104.445,Cambodia
+033401,Bassac Chaktomouk,Bassac,11.552,104.933,Cambodia
+033402,Koh Khel,Bassac,11.24,105.04,Cambodia
+100001,Tuk Chhoo,Kamchay,10.683,104.13,Cambodia
+110409,Takhmao,Bassac,11.482,104.949,Cambodia
+201107,Bac Prea,Tri. Grate lake,13.309,103.399,Cambodia
+430101,Ban Khmoun,Sekong,13.741,106.187,Cambodia
+430102,Siempang,Sekong,14.119,106.394,Cambodia
+430103,Chantangoy,Sekong,13.564,106.057,Cambodia
+440101,Ban Kamphun,Sesan,13.534,106.046,Cambodia
+440102,Voeun Sai,Sesan,13.968,106.814,Cambodia
+440103,Andaung Meas,Sesan,14.047,107.107,Cambodia
+450101,Lumphat,Sre Pork,13.548,106.529,Cambodia
+520101,Mong Kolborey,Mongkol Borey,13.504,103.019,Cambodia
+530101,Sisophon,Sisophon,13.614,102.998,Cambodia
+540101,Kralanh,Stung Sreng,13.544,103.543,Cambodia
+550101,Treng,Stung Sangker,12.869,103.139,Cambodia
+550102,Battambang,Stung Sangker,13.056,103.199,Cambodia
+550103,Sre Ponleu,Stung Sangker,12.731,102.78,Cambodia
+551101,Mong Russey,St. Dauntry,12.853,103.44,Cambodia
+560101,Bot Chhvear/Untac Bridge,Siem Reap,13.344,103.996,Cambodia
+560102,Prasat Keo,Great Lake,13.456,103.971,Cambodia
+570101,Kompong Kdei,St. Chikreng,13.127,104.339,Cambodia
+580101,Pursat,Stung Pursat,12.663,104.054,Cambodia
+580102,Taing Leach,Stung Pursat,12.283,103.613,Cambodia
+580103,Bac Trakoun,Pursat,12.354,103.752,Cambodia
+580104,Khum Viel,Stung Pursat,12.179,103.743,Cambodia
+580105,Lo Lok Sar,,12.191,103.789,Cambodia
+580106,Phum Kos,Pursat,12.225,103.807,Cambodia
+580110,Kbal hong(up),Pursat,12.681,104.08,Cambodia
+580120,Kbal hong(down),Stung Pursat,12.637,104.029,Cambodia
+580201,Peam,Pursat,12.15,103.7,Cambodia
+580301,Prey Klong(down),Stung Pursat,12.111,103.914,Cambodia
+580302,Prey Klong(up),Stung Santre,12.504,103.214,Cambodia
+580310,Sanlong(up),Pursat,12.758,103.813,Cambodia
+580320,Sanlong(down),Pursat,12.714,103.816,Cambodia
+580330,Svay At,Pursat,12.675,103.816,Cambodia
+581101,Campang,St. Dauntry,12.186,102.879,Cambodia
+581102,Svay Don Keo,Pursat,12.77,102.879,Cambodia
+581210,Kroch seuch (up),St. Dauntry,12.77,103.445,Cambodia
+581220,Kroch seuch (down),St. Dauntry,12.729,103.937,Cambodia
+581310,Wat Liep(down),Pursat,12.603,102.991,Cambodia
+581410,Wat Liep(up),Pursat,12.655,102.991,Cambodia
+583010,Tlea Maam (1),Pursat,12.096,102.876,Cambodia
+583020,Thlea Maam(up),Pursat,12.703,102.989,Cambodia
+583101,Banteay Krang,St. Krakor,12.966,103.543,Cambodia
+590101,Boribo,Stung Boribo,12.348,104.38,Cambodia
+600101,Kompong Chen,Stung Staung,12.937,104.583,Cambodia
+610101,Kg. Thom,Stung Sen,12.708,104.873,Cambodia
+610102,Kompong  Putrea,Stung Sen,13.217,105.264,Cambodia
+610103,Panha Chi,Stung Sen,12.717,104.972,Cambodia
+620101,Kg. Thmar,Stung Chinit,12.501,105.131,Cambodia
+640101,Anlong Touk,St. Prek Thnot,11.436,104.443,Cambodia
+640102,Thnous Loung/Kg. Speu,St. Prek Thnot,11.456,104.51,Cambodia
+640103,PeamKhley-dam site,St. Prek Thnot,11.47,104.369,Cambodia
+640104,Srok Sandan,,12.858,105.081,Cambodia
+650101,Svay Rieng,,11.137,105.804,Cambodia
+660101,Kompong Trabek,,11.271,105.342,Cambodia
+670101,Stung Banam,St. Banam,11.408,105.304,Cambodia
+680101,Kompong Ampil,Stung Takeo,11.076,104.631,Cambodia
+010402,Xieng Kok,Mekong,20.897,100.642,Lao PDR
+010802,Ban Houi Sai,Mekong,20.282,100.405,Lao PDR
+010901,Pak Beng,Mekong,19.858,101.115,Lao PDR
+011201,Luang Prabang,Mekong,19.892,102.137,Lao PDR
+011304,Ban Pakkhone,Mekong,19.43,101.855,Lao PDR
+011401,Paklay,Mekong,18.208,101.413,Lao PDR
+011901,Vien Tiane,Mekong,17.928,102.62,Lao PDR
+012703,Paksane,Mekong,18.372,103.667,Lao PDR
+013102,Thakhek,Mekong,17.393,104.807,Lao PDR
+013301,Keng Kabao,Mekong,16.813,104.75,Lao PDR
+013302,Ban Savang,Mekong,,,Lao PDR
+013401,Savannakhet,Mekong,16.562,104.747,Lao PDR
+013503,Paktaphane,Mekong,15.933,105.35,Lao PDR
+013901,Pakse,Mekong,15.117,105.8,Lao PDR
+014101,Ban Mouang,Mekong,14.938,105.912,Lao PDR
+014301,Ban Chan Noi,Mekong,14.317,105.887,Lao PDR
+014302,Ban Hat SaiKhoune,Mekong,14.092,105.858,Lao PDR
+014304,Veunkham,Mekong,13.98,105.905,Lao PDR
+080101,Muong Nam Tha,Nam Tha,21.017,101.413,Lao PDR
+080102,Ban Hat Kham,Nam Tha,20.162,100.712,Lao PDR
+080103,Ban Hong Leuay,Nam Tha,21.05,101.418,Lao PDR
+100101,Ban Hat Kham,Nam Ou,,,Lao PDR
+100102,Muong Ngoy,Nam Ou,20.702,102.758,Lao PDR
+100103,Ban Hatsa,Nam Ou,21.739,102.032,Lao PDR
+100104,B.Fay,Nam Ou,20.242,102.355,Lao PDR
+110101,Ban Sibounhom,Nam Suong,19.97,102.273,Lao PDR
+110201,Ban Kok Van,Nam Pa,19.953,102.298,Lao PDR
+120101,Ban Mixay (Ban Mout),Nam Khan,19.787,102.177,Lao PDR
+120102,Ban Pak Bak (downstream),Nam Khan,19.743,102.28,Lao PDR
+210301,Ban Phone Kheng,Hong Xeng,,,Lao PDR
+210401,Ban Houa Khoua,Hong Houa Khoua,,,Lao PDR
+210501,Ban Nong Nieng,Hong Nong Nieng,,,Lao PDR
+230101,Ban Pak Kanhoung,Nam Ngum,18.418,102.55,Lao PDR
+230102,Tha Ngon,Nam Ngum,18.135,102.622,Lao PDR
+230103,Ban Pak Ngum,Nam Ngum,18.145,103.102,Lao PDR
+230104,Ban Tha Lat,Nam Ngum,18.517,102.517,Lao PDR
+230105,Keng Hay,Nam Ngum,,,Lao PDR
+230106,Ba Na Bong,Nam Ngum,18.18,102.883,Lao PDR
+230108,Veunkham,Nam Ngum,18.183,102.617,Lao PDR
+230110,Ban Na Luang,Nam Ngum,18.913,102.778,Lao PDR
+230113,Ban Phien Luang,Nam Ngum,19.53,103.065,Lao PDR
+230201,Ban Hin Heup,Nam Lik,18.66,102.355,Lao PDR
+230202,Ban Nam Pot,Nam Lik,,,Lao PDR
+230205,Muong Kasi,Nam Lik,19.232,102.257,Lao PDR
+230401,Vang Vieng,Nam Song,18.923,102.45,Lao PDR
+240101,Ban Hat Khay,Nam Mang,18.407,103.165,Lao PDR
+240102,Dam Site,Nam Mang,,,Lao PDR
+240103,Tadleuk,Nam Leuk,,,Lao PDR
+250101,Muong Mai,Nam Nhiep,18.505,103.658,Lao PDR
+260101,Muong Borikhane,Nam Sane,18.562,103.737,Lao PDR
+260102,Ban Hatxiengtom,Nam Sane,18.558,103.747,Lao PDR
+270101,Ban Phone Si,Nam Ca Ding,18.302,104.098,Lao PDR
+270102,Ban Pak Ca Ding,Nam Ca Ding,18.32,103.997,Lao PDR
+270901,Kham Keut,Nam Theun,18.235,104.662,Lao PDR
+270903,Ban Signo,Nam Theun,17.845,105.052,Lao PDR
+320101,Se Bang Fai,Se Bang Fai,17.072,104.985,Lao PDR
+320102,Ban Ton Hen,Se Bang Fai,,,Lao PDR
+320103,Ban Xaysoung,Se Bang Fai,,,Lao PDR
+320104,Ban Phak Phua,Se Bang Fai,,,Lao PDR
+320105,Ban Tha Khan,Se Bang Fai,,,Lao PDR
+320106,Ban Pak Se Bang Fai,Se Bang Fai,,,Lao PDR
+320107,Mahaxai,Se Bang Fai,17.413,105.202,Lao PDR
+320108,Kuanpho,Se Bang Fai,17.497,105.428,Lao PDR
+350101,Ban Keng Done,Se Bang Hieng,16.185,105.317,Lao PDR
+350104,Keng Tangane,Se Bang Hieng,16.467,105.55,Lao PDR
+350105,Tchepon (Sop Nam),Se Bang Hieng,16.687,106.218,Lao PDR
+350106,Highway Bridge,Se Bang Hieng,16.697,106.22,Lao PDR
+350201,Muong Nong,Se La Nong,16.37,106.513,Lao PDR
+350301,Ban Muong Chan,SePon,16.66,106.292,Lao PDR
+350401,Highway Bridge,Se Thamouak,16.577,105.913,Lao PDR
+350501,Ban Phalane,Sexangxoy,16.657,105.568,Lao PDR
+350601,Kengkok,Se Champhone,16.445,105.203,Lao PDR
+350602,Dong Hen,Se Champhone,16.698,105.292,Lao PDR
+350603,Muong Atsaphone,Se Noi,17.033,105.417,Lao PDR
+360106,Ban Sebangnouane,Se Bangnouane,16.0,105.467,Lao PDR
+390101,Ban Nanai,Se Done,15.378,105.823,Lao PDR
+390102,Khong Sedone,Se Done,15.575,105.815,Lao PDR
+390103,Saravanne,Se Done,15.71,106.45,Lao PDR
+390104,Souvanna Khili,Se Done,15.397,105.825,Lao PDR
+390110,Ban Done Xe,Se Done,15.332,105.817,Lao PDR
+390201,Km 35,Houei Champi,15.185,106.243,Lao PDR
+390301,Km 8,Houei Gnang,15.117,105.867,Lao PDR
+400101,Ban Bang Lieng,Houei Banglieng,14.98,105.922,Lao PDR
+410101,Km40,Houei Tomo,14.842,105.958,Lao PDR
+420101,B.Mai Vang Makxeo,Houei Bangkhamouan,14.59,105.827,Lao PDR
+430105,M.May (Attopeu),Se Kong,14.807,106.843,Lao PDR
+430106,Veun Khene,Sekong,14.81,106.778,Lao PDR
+430107,Khoueng Sekong,Se Kong,15.433,106.733,Lao PDR
+430705,Ban Fang Deng (Attopeu),Se Kaman,14.808,106.933,Lao PDR
+010401,Sop Ruak,Mekong,20.348,100.087,Thailand
+010501,Chiang Sean,Mekong,20.273,100.083,Thailand
+010601,Sop Kok,Mekong,,,Thailand
+010801,Chiang Khong,Mekong,20.268,100.41,Thailand
+011801,Ban Sang Khom,Mekong,,,Thailand
+011903,Chiang Khan,Mekong,17.897,101.668,Thailand
+011904,Pa Mong Dam Site,Mekong,17.985,102.43,Thailand
+012001,Nong Khai,Mekong,17.877,102.72,Thailand
+012008,Tha Bo,Mekong,17.857,102.592,Thailand
+012301,Phon Phisai,Mekong,18.022,103.078,Thailand
+012501,Ban Nong Bua,Mekong,,,Thailand
+013101,Nakhon Phanom,Mekong,17.398,104.803,Thailand
+013105,That Phanom,Mekong,16.95,104.733,Thailand
+013402,Mukdahan,Mekong,16.54,104.737,Thailand
+013501,Khemarat,Mekong,16.067,105.2,Thailand
+013801,Khong Chiam,Mekong,15.318,105.5,Thailand
+040101,Ban Pa Yang,Nam Mae Kham,20.233,99.807,Thailand
+040201,Ban Huai Yano Mai,Nam Mae Chan,20.112,99.785,Thailand
+050104,Chiang Rai,Nam Mae Kok,19.918,99.85,Thailand
+050105,Ban Tha Ton,Nam Mae Kok,20.06,99.363,Thailand
+050201,Ban Tha Mai Liam,Nam Mae Fang,20.02,99.358,Thailand
+050301,Ban Tha Sai,Nam Mae Lao,19.853,99.843,Thailand
+051001,Dam Site,Nam Mae Suai,19.7,99.52,Thailand
+051101,Dam Site,Nam Mae Pun Luang,19.433,99.458,Thailand
+070103,Thoeng,Nam Mae Ing,19.687,100.192,Thailand
+140101,Ban Pak Huai,Nam Heung,17.703,101.415,Thailand
+140201,Dan Sai,Nam Man,17.285,101.152,Thailand
+140301,Dam Site,Nam San,17.432,101.27,Thailand
+150101,Wang Saphung,Nam Loei,17.298,101.78,Thailand
+150102,Ban Wang Sai,Nam Loei,17.052,101.52,Thailand
+290102,Ban Tha Kok Daeng,Nam Songkhram,17.862,103.78,Thailand
+310102,Nam Kae,Nam Kam,16.955,104.508,Thailand
+310201,Ban Tham Hai Bridge,Nam Pung,17.08,104.257,Thailand
+330101,Ban Nong Aek Bridge,Huai Bang Sai,,,Thailand
+330103,Ban Na Kham Noi,Huai bang Sai,16.718,104.625,Thailand
+370104,Yasothom,Nam chi,15.782,104.142,Thailand
+370122,Ban Chot,Nam Chi,16.1,102.577,Thailand
+370210,Ban Kae (Si Chomphu),Nam Pong,16.867,102.185,Thailand
+370805,Ban Tha Dua,Lam Choen,16.493,102.128,Thailand
+371101,Ban Nong Kiang,Huai Rai,16.133,101.667,Thailand
+371203,Ban Tad Ton,Huai Pa Thao,15.942,102.03,Thailand
+371509,Ban Na Thom,Nam Yang,16.058,104.038,Thailand
+380103,Ubon,Nam Mun,15.222,104.862,Thailand
+380111,Pak Mun,Nam Mun,15.308,105.495,Thailand
+380127,Kaeng Saphu Tai,Nam Mun,15.24,105.248,Thailand
+380134,Rasi Salai,Nam Mun,15.335,104.162,Thailand
+381206,Ban Huai Khayuong,Huai Khayuong,15.005,104.638,Thailand
+381503,Ban Fang Phe,Lam Dom Yai,14.69,105.16,Thailand
+019803,Tan Chau,Mekong,10.803,105.243,Vietnam
+019804,My Thuan,Mekong,10.273,105.9,Vietnam
+019805,My Tho,Mekong,10.357,106.357,Vietnam
+019807,Cho Moi,Mekong,10.545,105.46,Vietnam
+019827,Hoa Binh,Mekong,10.295,106.597,Vietnam
+019828,Cao Lanh,Mekong,10.467,105.317,Vietnam
+039801,Chau Doc,Bassac,10.707,105.133,Vietnam
+039802,Long Xuyen,Bassac,10.382,105.438,Vietnam
+039803,Can Tho,Bassac,10.033,105.79,Vietnam
+039812,Dai Ngai,Bassac,9.728,106.078,Vietnam
+440201,Kontum,Dak Kla,14.343,108.008,Vietnam
+440601,Trung Nghai,Krong Po Co,14.367,107.867,Vietnam
+450201,Buon Krong Buk,Krong Buk,,,Vietnam
+450501,Buon Krong Ana,Ea Krong Ana,,,Vietnam
+450701,Duc Xuyen,Krong Kno,12.35,107.833,Vietnam
+451301,Cau 14 (Buon Bur),Ea Krong,12.61,107.933,Vietnam
+451303,Drayling I,Ea Krong,,,Vietnam
+451304,Drayling II,Ea Krong,,,Vietnam
+451305,Ban Don,Vam Serepok,12.85,107.783,Vietnam
+451501,Iahleo,Kinh Iahleo,13.067,108.083,Vietnam
+980102,Vung Tau,East Sea,10.333,107.067,Vietnam
+980301,Moc Hoa,Vam Co Tay,10.778,105.937,Vietnam
+980503,My Hoa,Ham Loung,10.217,106.355,Vietnam
+980505,Cho Lach,Ham Loung,10.27,106.13,Vietnam
+980601,Vam Nao,Vam Nao,10.575,105.357,Vietnam
+981702,Tra Vinh,Co Chien,9.975,106.375,Vietnam
+985203,Xuan To,Vinh Te,10.6,104.933,Vietnam
+985401,Tri Ton,Kinh Tri Ton,10.433,105.05,Vietnam
+986201,Long Dinh,Kinh Xang,10.387,106.268,Vietnam
+986302,Tan Hiep,Kinh Cai San,10.113,105.288,Vietnam
+986801,Vi Thanh,Kinh Xa No,9.778,105.472,Vietnam
+987101,Phung Hiep,Kinh Cai Con,9.808,105.827,Vietnam
+988001,Cai Lay,Ba Rai,10.407,106.125,Vietnam
+988106,Hung Thanh,Kinh Phouc Xuyen,10.767,105.783,Vietnam

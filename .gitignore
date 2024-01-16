@@ -334,9 +334,14 @@ tags
 ### User-added gitignore ###
 # Ignore contents of data folder but keep folder structure and auxiliary files
 WP3/T3.2/notebooks/cglops_availability/plots/
+WP3/T3.2/notebooks/cglops_availability/metadata/
+
 WP3/T3.2/notebooks/ccilakes_availability/plots/
 WP3/T3.2/notebooks/ccilakes_availability/metadata/
+
 WP3/T3.2/notebooks/mrc_webscrapper/outputs/
-WP3/3.2/notebooks/mrc_webscrapper/chromedriver.exe
+WP3/T3.2/notebooks/mrc_webscrapper/polygons/
+WP3/T3.2/notebooks/mrc_webscrapper/chromedriver.exe
+
 WP3/T3.2/notebooks/tsm_retrieval/data/
 WP3/T3.2/notebooks/tsm_retrieval/validation/

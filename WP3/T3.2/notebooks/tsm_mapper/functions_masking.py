@@ -1,30 +1,54 @@
 import ee
+import constants as c
+
+def apply_scl_watermask(img):
+  """ Apply Sentinel-2 water mask based on L2A Scene Classification (SCL) flag. """
+  img = ee.Image(img)
+  watermask = img.select('SCL').eq(6)
+  return(img.updateMask(watermask).addBands([watermask]))
+
+def apply_qa_watermask(img):
+    """ Apply Landsat water mask based on QA flag. """
+    def _bitwiseExtract(value, fromBit, toBit=None):
+        if toBit == None: toBit = fromBit
+        maskSize = ee.Number(1).add(toBit).subtract(fromBit)
+        mask = ee.Number(1).leftShift(maskSize).subtract(1)
+        return value.rightShift(fromBit).bitwiseAnd(mask)
+
+    img = ee.Image(img)
+    qa = img.select('QA_PIXEL')
+    watermask =  _bitwiseExtract(qa, 7).rename('water')  
+
+    return(img.updateMask(watermask).addBands([watermask]))
+
+def apply_scl_watermask(img):
+  """ Apply Sentinel-2 water mask based on L2A Scene Classification (SCL) flag. """
+  img = ee.Image(img)
+  watermask = img.select('SCL').eq(6)
+  return(img.updateMask(watermask).addBands([watermask]))
+
+def apply_index_watermask(img):
+    """ Apply index based water mask based on Dethier et al. (10.1126/science.abn7980) """
+    bands = ee.Dictionary(ee.Algorithms.If(
+        img.getString('SPACECRAFT_NAME'), # if MSI
+        c.bands_msi, #MSI
+        ee.Algorithms.If(
+            img.getString('SPACECRAFT_ID').equals('LANDSAT_7'),
+            c.bands_etm, #ETM+
+            c.bands_oli #OLI
+        )
+    ))
+    img = ee.Image(img)
+    mndwi = img.expression('(green-swir1)/(green+swir1)', {
+        'green': img.select([bands.get('green')]),
+        'swir1': img.select([bands.get('swir1')])}).rename('mndwi')
+    mask = mndwi.lt(0) \
+        .And(img.select([bands.get('swir1')]).lt(0.05)) \
+        .And((img.select([bands.get('blue')]).add(img.select([bands.get('green')]))).lt(0.5)) \
+        .rename('watermask')
+    return(img.updateMask(mask).addBands(mask))
 
 def apply_swm_watermask(img):
-  """ Apply global threshold water mask based on Sentinel Water Mask (SWM) index 
-      (Milczarek et al. 2017). """
-  bands = ee.List(ee.Algorithms.If(
-      img.getString('SPACECRAFT_NAME'), # if MSI
-      ['B2', 'B3', 'B8', 'B11'], #MSI
-      ee.Algorithms.If(
-         img.getString('SPACECRAFT_ID').equals('LANDSAT_7'),
-         ['B1', 'B2', 'B4', 'B5'], #ETM+
-         ['B2', 'B3', 'B5', 'B6']) #OLI
-  ))
-  b_blue = bands.get(0)
-  b_green = bands.get(1)
-  b_nir = bands.get(2)
-  b_swir1 = bands.get(3)
-  img = ee.Image(img)
-  swm = img.expression('(blue+green)/(nir+swir1)', {
-    'blue': img.select([b_blue]),
-    'green': img.select([b_green]),
-    'nir': img.select([b_nir]),
-    'swir1': img.select([b_swir1])}).rename('swm')
-  watermask = swm.gt(1.5).rename('watermask')
-  return(img.updateMask(watermask).addBands([swm, watermask]))
-
-def apply_watermask(img):
     """ Apply water mask based on Fan et al. 2022 (10.1109/IGARSS46834.2022.9883460) method applied on the
         Sentinel Water Mask (SWM) index (Milczarek et al. 2017)."""
 

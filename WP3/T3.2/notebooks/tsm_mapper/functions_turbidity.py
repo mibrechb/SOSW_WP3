@@ -229,8 +229,8 @@ def calc_indices(img):
       ['B2', 'B3', 'B4', 'B5'], #MSI
       ee.Algorithms.If(
           img.getString('SPACECRAFT_ID').equals('LANDSAT_7'),
-          ['B1', 'B2', 'B3', 'B4'], #ETM+
-          ['B2', 'B3', 'B4', 'B5']) #OLI
+          ['.*B1', '.*B2', '.*B3', '.*B4'], #ETM+
+          ['.*B2', '.*B3', '.*B4', '.*B5']) #OLI
   ))
   b_red = bands.getString(2)
   b_green = bands.getString(1)
@@ -238,9 +238,9 @@ def calc_indices(img):
   b_nir = bands.getString(3)
   # Normalized Suspended Material Index for OLI and MSI.
   nsmi = img.expression('(red+green-blue)/(red+green+blue)', {
-    'red': img.select([b_red]),
-    'green': img.select([b_green]),
-    'blue': img.select([b_blue])}).rename('add_nsmi')
+    'red': img.select(b_red),
+    'green': img.select(b_green),
+    'blue': img.select(b_blue)}).rename('add_nsmi')
   # Calculate Normalized Difference Suspended Sediment Index for OLI and MSI (blue/nir-index).
   ndssi = img.normalizedDifference([b_blue, b_nir]).rename('add_ndssi')
   ndti = img.normalizedDifference([b_red, b_green]).rename('add_ndti')
@@ -254,17 +254,17 @@ def calc_band_ratios(img):
       ['B2', 'B3', 'B4', 'B5'], #MSI
       ee.Algorithms.If(
           img.getString('SPACECRAFT_ID').equals('LANDSAT_7'),
-          ['B1', 'B2', 'B3', 'B4'], #ETM+
-          ['B2', 'B3', 'B4', 'B5']) #OLI
+          ['.*B1', '.*B2', '.*B3', '.*B4'], #ETM+
+          ['.*B2', '.*B3', '.*B4', '.*B5']) #OLI
     )
   )
   b_red = bands.getString(2),
   b_green = bands.getString(1)
   b_blue = bands.getString(0)
   b_nir = bands.getString(3)
-  bratio_br = img.select([b_blue]).divide(img.select([b_red])).rename('add_bratio_br')
-  bratio_bn = img.select([b_blue]).divide(img.select([b_nir])).rename('add_bratio_bn')
-  bratio_gr = img.select([b_green]).divide(img.select([b_red])).rename('add_bratio_gr')
-  bratio_rgb = ((ee.Image.constant(1).divide(img.select([b_red]))) \
-                    .subtract((ee.Image.constant(1).divide(img.select([b_green]))))).multiply(img.select([b_blue])).rename('add_bratio_rgb')
+  bratio_br = img.select(b_blue).divide(img.select(b_red)).rename('add_bratio_br')
+  bratio_bn = img.select(b_blue).divide(img.select(b_nir)).rename('add_bratio_bn')
+  bratio_gr = img.select(b_green).divide(img.select(b_red)).rename('add_bratio_gr')
+  bratio_rgb = ((ee.Image.constant(1).divide(img.select(b_red))) \
+                    .subtract((ee.Image.constant(1).divide(img.select([b_green]))))).multiply(img.select(b_blue)).rename('add_bratio_rgb')
   return(img.addBands([bratio_br, bratio_bn, bratio_gr, bratio_rgb]))

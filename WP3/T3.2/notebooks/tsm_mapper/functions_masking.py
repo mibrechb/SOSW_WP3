@@ -1,11 +1,41 @@
 import ee
 import constants as c
 
-def apply_scl_watermask(img):
-  """ Apply Sentinel-2 water mask based on L2A Scene Classification (SCL) flag. """
-  img = ee.Image(img)
-  watermask = img.select('SCL').eq(6)
-  return(img.updateMask(watermask).addBands([watermask]))
+def apply_csp_cloudmask(qa_band, clear_thresh):
+    """ Apply Cloud Score+ cloudmask to Sentinel-2 MSI. """
+    def wrap(img):
+        img = ee.Image(img)
+        cld_probability = ee.Image(img.get('s2_csp')).select(qa_band).rename(qa_band)
+        is_cloud = cld_probability.gte(clear_thresh).Not().rename('is_cloud')
+        cld_bands = ee.Image([cld_probability, is_cloud])
+        img_masked = img.select('.*B.*').updateMask(is_cloud.Not())
+        return(img.addBands(**{'srcImg': img_masked, 'overwrite': True}).addBands(cld_bands))
+    return(wrap)
+
+def apply_qa_cloudmask(img):
+    """ Apply QA_PIXEL cloudmask to Landsat Collection 2 Level 2. """
+
+    def _bitwiseExtract(value, fromBit, toBit=None):
+        if toBit == None: toBit = fromBit
+        maskSize = ee.Number(1).add(toBit).subtract(fromBit)
+        mask = ee.Number(1).leftShift(maskSize).subtract(1)
+        return value.rightShift(fromBit).bitwiseAnd(mask)
+
+    img = ee.Image(img)
+    qa = img.select('QA_PIXEL')
+    dilatedCloud =  _bitwiseExtract(qa, 1).rename('dilated_cloud')
+    cirrus =        _bitwiseExtract(qa, 2).rename('cirrus')
+    cloud =         _bitwiseExtract(qa, 3).rename('cloud')
+    cloudShadow =   _bitwiseExtract(qa, 4).rename('shadow')
+    clear =         _bitwiseExtract(qa, 6).rename('clear')
+    isCloud = ((cloud.Not()) \
+                .And(cirrus.Not()) \
+                #.And(dilatedCloud.Not()) \
+                .And(cloudShadow.Not()) \
+                    .Not()).rename('is_cloud')
+    cld_bands = ee.Image([dilatedCloud, cirrus, cloud, cloudShadow, isCloud])
+    img_masked = img.select('.*B.*').updateMask(isCloud.Not())
+    return(img.addBands(**{'srcImg': img_masked, 'overwrite': True}).addBands(cld_bands))
 
 def apply_qa_watermask(img):
     """ Apply Landsat water mask based on QA flag. """
@@ -17,14 +47,13 @@ def apply_qa_watermask(img):
 
     img = ee.Image(img)
     qa = img.select('QA_PIXEL')
-    watermask =  _bitwiseExtract(qa, 7).rename('water')  
-
+    watermask =  _bitwiseExtract(qa, 7).eq(1).rename('is_water')
     return(img.updateMask(watermask).addBands([watermask]))
 
 def apply_scl_watermask(img):
   """ Apply Sentinel-2 water mask based on L2A Scene Classification (SCL) flag. """
   img = ee.Image(img)
-  watermask = img.select('SCL').eq(6)
+  watermask = img.select('SCL').eq(6).rename('is_water')
   return(img.updateMask(watermask).addBands([watermask]))
 
 def apply_index_watermask(img):
@@ -45,7 +74,7 @@ def apply_index_watermask(img):
     mask = mndwi.lt(0) \
         .And(img.select([bands.get('swir1')]).lt(0.05)) \
         .And((img.select([bands.get('blue')]).add(img.select([bands.get('green')]))).lt(0.5)) \
-        .rename('watermask')
+        .rename('is_water')
     return(img.updateMask(mask).addBands(mask))
 
 def apply_swm_watermask(img):
@@ -131,5 +160,5 @@ def apply_swm_watermask(img):
     # p2 =    p1.And(r_swir.lt(t_swir)).rename('p2')
     # wir =   wi.subtract(wi.reduceNeighborhood(**{'reducer': ee.Reducer.min(), 'kernel': ee.Kernel.square(**{'radius': 2})}))
     # c2 =    c1.Or(p2.And(wir.gt(ee.Image.constant(t_wir)))).rename('c2')
-    mask = wi.gt(t_s).rename('watermask')
+    mask = wi.gt(t_s).rename('is_water')
     return(img.updateMask(mask).addBands(mask))

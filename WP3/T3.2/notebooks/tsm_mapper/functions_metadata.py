@@ -45,6 +45,6 @@ def apply_bname_harmonization(sensor, is_rrs=False):
     return(img)
 
   if is_rrs:
-    return(_wrap_all)
-  else:
     return(_wrap_rrs)
+  else:
+    return(_wrap_all)

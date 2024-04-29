@@ -2,7 +2,7 @@ import ee
 import functions_masking as funcs_masking
 import constants as c
 
-def load_st_imcoll(start, end, roi, **kwargs):
+def load_st_imcoll(start, end, roi, cld_buffer=0, watermask='qa'):
   """ Loads Landsat L2C2 Surface Temperature ImageCollection. """
 
   def _apply_scale_factors(im):
@@ -54,10 +54,13 @@ def load_st_imcoll(start, end, roi, **kwargs):
   ic_lst = ic_l4.merge(ic_l5).merge(ic_l7).merge(ic_l8).merge(ic_l9) \
     .map(_apply_scale_factors) \
     .map(_harmonize_bandnames) \
-    .map(funcs_masking.apply_qa_cloudmask) \
-    .map(funcs_masking.apply_qa_watermask)
-    # .cast(**{
-    #   'bandTypes': {'ST': 'uint16', 'QA_PIXEL': 'uint16', 'ST_QA': 'uint16', 'ST_EMIS': 'uint16', 'ST_CDIST': 'uint16'},
-    #   'bandOrder': ['ST', 'QA_PIXEL', 'ST_QA', 'ST_EMIS', 'ST_CDIST']}) \
+    .map(funcs_masking.apply_qa_cloudmask(buffer_dist=cld_buffer))
+  
+  if watermask=='qa': 
+    ic_lst = ic_lst.map(funcs_masking.apply_qa_watermask)
+  elif watermask=='swm':
+    ic_lst = ic_lst.map(funcs_masking.apply_swm_watermask)
+  elif watermask=='index':
+    ic_lst = ic_lst.map(funcs_masking.apply_index_watermask)
   
   return(ee.ImageCollection(ic_lst))

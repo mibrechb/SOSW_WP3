@@ -1,71 +1,96 @@
 import ee
 
-def sample_image(stations, sample_area=30*30):
-  """Samples image bands at provided virtual stations and with the provided sample area."""
-  def wrap(im):
-    def _get_roi_coverage(geometry):
-      """ Computes a property with relative area of clear pixels covering ROI """
-      total_area = geometry.area(0.5) # calculate roi area in m^2
-      unmasked_area = im.select('B4.*').mask() \
-        .selfMask() \
-        .multiply(ee.Image.pixelArea()) \
-        .reduceRegion(**{
-          'reducer': ee.Reducer.sum(), 
-          'geometry': geometry, 
-          'scale': scale,
-          'maxPixels': 1e15,
-          'bestEffort': True
-        }).values().get(0)
-      px_ratio = ee.Number(unmasked_area).divide(total_area)
-      roi_coverage = px_ratio.multiply(100)
-      return(roi_coverage)
-      
-    def _get_stats(station):
-      """ Calculate areal stats over virtual station. """
-      im_subset = im.select(['B.*', 'add.*'])
-      geometry = station.geometry().buffer(ee.Number(sample_area).sqrt().divide(2), 0.01).bounds()
-      station_id = station.getString('station_id')
-      
-      reducers = ee.Reducer.mean().combine(**{
-        "reducer2": ee.Reducer.stdDev(), "sharedInputs": True}).combine(**{
-        "reducer2": ee.Reducer.minMax(), "sharedInputs": True}).combine(**{
-        "reducer2": ee.Reducer.median(**{"maxBuckets":500, "minBucketWidth": 0.125}), "sharedInputs": True})#.combine({
-        #"reducer2": ee.Reducer.skew(), "sharedInputs":  true}).combine({
-        #"reducer2": ee.Reducer.kurtosis(), "sharedInputs": True}).combine({
-        #"reducer2": ee.Reducer.percentile({"percentiles": [05,25,75,95], "maxBuckets": 500, "minBucketWidth": 0.125}), "sharedInputs": true})
-      
-      cld_stats_500m = im.select('is_cloud').rename('cloudiness_500m').reduceRegion(**{
-        'reducer': ee.Reducer.mean(), 'geometry': geometry.buffer(500), 'scale': scale, 'tileScale': 2
-      })
-    
-      im_stats = im_subset.reduceRegion(**{
-        'reducer': reducers, 'geometry': geometry, 'scale': scale, 'tileScale': 2
-      })
-      
-      feature = ee.Feature(geometry, {}) \
-        .set('system:time_start', im.get('system:time_start')) \
-        .set('timestamp', ee.Date(im.get('system:time_start'))) \
-        .set('station_id', station_id) \
-        .set('roi_coverage', _get_roi_coverage(geometry)) \
-        .set(ee.Dictionary(im_stats)) \
-        .set(ee.Dictionary(cld_stats_500m))
-      return(feature)
-    
-    CLOUD_COVER = ee.Number(ee.Algorithms.If(
-      im.getNumber('CLOUDY_PIXEL_PERCENTAGE'),
-      im.getNumber('CLOUDY_PIXEL_PERCENTAGE'),
-      im.getNumber('CLOUD_COVER')
-      ))
-    platform = ee.String(ee.Algorithms.If(
-      im.getString('SPACECRAFT_NAME'),
-      im.getString('SPACECRAFT_NAME').slice(0, -1).toUpperCase(),
-      im.getString('SPACECRAFT_ID').replace('_', '-')
-      ))
-    scale = ee.Number(ee.Algorithms.If(
-      ee.String(platform).equals('SENTINEL-2'), 10, 30))
+def get_matchups(fc_station, ic_rs, max_diff=1):
+    """ Matches FeatureCollection with closest match from ImageCollection. """
+    geometry = ee.FeatureCollection(fc_station).geometry()
+    ic_rs = ic_rs.filter(ee.Filter.bounds(geometry))
+    max_diff_filter = ee.Filter.maxDifference(**{
+      'difference': max_diff * 24 * 60 * 60 * 1000,
+      'leftField': 'system:time_start',
+      'rightField': 'system:time_start'
+    })
+    save_best_join = ee.Join.saveBest(**{
+      'matchKey': 'bestImage',
+      'measureKey': 'timeDiff'
+    })
+    fc_matchups = save_best_join.apply(fc_station, ic_rs, max_diff_filter)
+    return fc_matchups
 
-    fc_samples = stations \
-      .map(_get_stats) \
-      .map(lambda feature: feature.set('CLOUD_COVER', CLOUD_COVER).set('platform', platform))
-    return(fc_samples)
-  return(wrap)
+def get_matchup_sample(buffer_dist=15):
+    """ Sample matched image at feature geometry and add aggregated value as property. """
+    def _wrap(feature):
+      feature = ee.Feature(feature)
+      match_img = ee.Image(feature.get('bestImage'))
+      cloud_cover = ee.Algorithms.If(
+        match_img.getString('sensor').equals('msi'),
+        match_img.getNumber('CLOUDY_PIXEL_PERCENTAGE'),
+        match_img.getNumber('CLOUD_COVER')
+      )
+      dt_img = match_img.date()
+      dt_insitu = ee.Date.parse('YYYY-MM-dd HH:mm:ss', feature.get('dt_utc'))
+      td_days = dt_img.difference(dt_insitu, 'day')
+      geometry = feature.geometry().buffer(buffer_dist)
+
+      reducers = ee.Reducer.mean() \
+        .combine(**{"reducer2": ee.Reducer.stdDev(), "sharedInputs": True}) \
+        .combine(**{"reducer2": ee.Reducer.minMax(), "sharedInputs": True}) \
+        .combine(**{"reducer2": ee.Reducer.median(**{
+           "maxBuckets":500, "minBucketWidth": 0.125}), "sharedInputs": True}) #\
+        #.combine(**{"reducer2": ee.Reducer.skew(), "sharedInputs":  True}) \
+        #.combine(**{"reducer2": ee.Reducer.kurtosis(), "sharedInputs": True}) \
+        #.combine(**{"reducer2": ee.Reducer.percentile(
+          #**{"percentiles": [5,25,75,95], "maxBuckets": 500, "minBucketWidth": 0.125}), "sharedInputs": True})
+      samples_agg = match_img.reduceRegion(**{
+         'reducer':   reducers, 
+         'geometry':  geometry,
+         'scale':     30, 
+         'tileScale': 2
+         })
+      
+      feature = feature \
+          .set('dt_utc', dt_insitu) \
+          .set('match_values', samples_agg) \
+          .set('bestImage', match_img.get('system:index')) \
+          .set('cloud_cover', cloud_cover) \
+          .set('match_dt_utc', ee.Date(match_img.get('system:time_start')).format()) \
+          .set('match_td_days', td_days) \
+          .set('platform', match_img.getString('platform'))
+      return(feature)
+    return(_wrap)
+
+def get_sample(geom, buffer_dist=15):
+    """ Sample image as FeatureCollection at provided geometry and add aggregated value as property. """
+    def _wrap(img):
+      img = ee.Image(img)
+      cloud_cover = ee.Algorithms.If(
+        img.getString('sensor').equals('msi'),
+        img.getNumber('CLOUDY_PIXEL_PERCENTAGE'),
+        img.getNumber('CLOUD_COVER')
+      )
+      dt_utc_img = img.date()
+      geometry = ee.Geometry(geom).buffer(buffer_dist)
+
+      reducers = ee.Reducer.mean() \
+        .combine(**{"reducer2": ee.Reducer.stdDev(), "sharedInputs": True}) \
+        .combine(**{"reducer2": ee.Reducer.minMax(), "sharedInputs": True}) \
+        .combine(**{"reducer2": ee.Reducer.median(**{
+           "maxBuckets":500, "minBucketWidth": 0.125}), "sharedInputs": True}) #\
+        #.combine(**{"reducer2": ee.Reducer.skew(), "sharedInputs":  True}) \
+        #.combine(**{"reducer2": ee.Reducer.kurtosis(), "sharedInputs": True}) \
+        #.combine(**{"reducer2": ee.Reducer.percentile(
+          #**{"percentiles": [5,25,75,95], "maxBuckets": 500, "minBucketWidth": 0.125}), "sharedInputs": True})
+      samples_agg = img.reduceRegion(**{
+         'reducer':   reducers, 
+         'geometry':  geometry,
+         'scale':     30, 
+         'tileScale': 2
+         })
+      
+      feature = ee.Feature(None, {
+        'dt_utc': dt_utc_img,
+        'match_values': samples_agg,
+        'cloud_cover': cloud_cover,
+        'platform': img.getString('platform')
+        })
+      return(feature)
+    return(_wrap)

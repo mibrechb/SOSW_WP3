@@ -53,7 +53,7 @@ def apply_qa_cloudmask(buffer_dist=0):
 
 def apply_qa_watermask(buffer_dist=0):
     """ Apply Landsat water mask based on QA flag with optional negative buffer. """
-    def _wrap(img)
+    def _wrap(img):
         def _bitwiseExtract(value, fromBit, toBit=None):
             if toBit == None: toBit = fromBit
             maskSize = ee.Number(1).add(toBit).subtract(fromBit)
@@ -75,7 +75,7 @@ def apply_qa_watermask(buffer_dist=0):
 def apply_index_watermask(buffer_dist=0):
     """ Apply index based water mask based on Dethier et al. (10.1126/science.abn7980)
         with optional negative buffer."""
-    def _wrap(img)
+    def _wrap(img):
         img = ee.Image(img)
         mndwi = img.expression('(green-swir1)/(green+swir1)', {
             'green': img.select('SR_green'),

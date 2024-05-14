@@ -90,7 +90,8 @@ def get_sample(geom, buffer_dist=15):
         'dt_utc': dt_utc_img,
         'match_values': samples_agg,
         'cloud_cover': cloud_cover,
-        'platform': img.getString('platform')
+        'platform': img.getString('platform'),
+        'sensor': img.getString('sensor')
         })
       return(feature)
     return(_wrap)

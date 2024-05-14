@@ -4,13 +4,13 @@ import functions_atmcorr_main as funcs_ac
 import functions_metadata as funcs_metadata
 import functions_turbidity as funcs_turb
 
-def load_sr_imcoll(sensor, **kwargs):
+def load_sr_imcoll(sensor, add_indices=False, add_ratios=False, **kwargs):
   if sensor == 'oli': sr_imcoll = prep_sr_oli(**kwargs)
   elif sensor == 'msi': sr_imcoll = prep_sr_msi(**kwargs)
   elif sensor == 'etm': sr_imcoll = prep_sr_etm(**kwargs)
   sr_imcoll = sr_imcoll.map(lambda img: ee.Image(img).set('sensor', sensor))
-  if add_indices: rrs_imcoll = rrs_imcoll.map(funcs_turb.calc_indices)
-  if add_ratios: rrs_imcoll = rrs_imcoll.map(funcs_turb.calc_ratios)
+  if add_indices: sr_imcoll = sr_imcoll.map(funcs_turb.calc_indices)
+  if add_ratios: sr_imcoll = sr_imcoll.map(funcs_turb.calc_ratios)
   return(ee.ImageCollection(sr_imcoll))
 
 def load_rrs_imcoll(sensor, add_indices=False, add_ratios=False, **kwargs):

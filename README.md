@@ -17,12 +17,12 @@ Check out the project website at [sos-water.eu](https://sos-water.eu) for more i
 Table 1. Code repositories part of deliverables
 | **Deliverable** | **Repository** | **Description** | **Maintainer** | **Documentation** |
 |-----------------|----------------|-----------------|----------------|---------------------|
-| D3.2 | [EOP1: SPM Mapper](https://github.com/mibrechb/SOSW_EOP1) | EO tool for suspended sediment estimation | [Eawag] | [📄]() |
-| D3.2 | [EOP2: Lake and River ice mapper](https://github.com/mibrechb/SOSW_EOP2) | EO tool for extraction of ice coverage and phenology | [Eawag] | [📄]() |
-| D3.2 | [EOP3: Satellite-based altimetry]()| EO tool for water level estimation | [FutureWater] | [📄]() |
-| D3.2 | [EOP4: Surface water temperature mapper](https://github.com/mibrechb/SOSW_EOP4) | EO tool for extraction of surface water temperature | [Eawag] | [📄]() |
-| D3.2 | [EOP5: Crop water productivity mapping]() | EO tool for estimation of crop water productivity | [FutureWater] | [📄]() |
-| D3.2 | [EOP6: Snow-water-equivalent downscaling]() | EO tool for downscaling of SWE | [FutureWater] | [📄]() |
+| D3.2 | [EOP1: SPM Mapper](https://github.com/mibrechb/SOSW_EOP1) | EO tool for suspended sediment estimation | [Eawag] | [📄](# "Not yet available") |
+| D3.2 | [EOP2: Lake and River ice mapper](https://github.com/mibrechb/SOSW_EOP2) | EO tool for extraction of ice coverage and phenology | [Eawag] | [📄](# "Not yet available") |
+| D3.2 | [EOP3: Satellite-based altimetry](# "Not yet available")| EO tool for water level estimation | [FutureWater] | [📄](# "Not yet available") |
+| D3.2 | [EOP4: Surface water temperature mapper](https://github.com/mibrechb/SOSW_EOP4) | EO tool for extraction of surface water temperature | [Eawag] | [📄](# "Not yet available") |
+| D3.2 | [EOP5: Crop water productivity mapping](# "Not yet available") | EO tool for estimation of crop water productivity | [FutureWater] | [📄](# "Not yet available") |
+| D3.2 | [EOP6: Snow-water-equivalent downscaling](# "Not yet available") | EO tool for downscaling of SWE | [FutureWater] | [📄](# "Not yet available") |
 
 <!-- Table 2 -->
 Table 2. Other code repositories part of the project
@@ -30,7 +30,7 @@ Table 2. Other code repositories part of the project
 |----------|----------------|-----------------|----------------|
 | T3.1 | [Data inventory](https://github.com/mibrechb/SOSW_data_inventory) | Inventory of meta-data for project-relevant dataset (part of deliverable 3.1) | [Eawag] |
 | T3.2 | [MRC Data Portal Web scraper](https://github.com/mibrechb/SOSW_MRC_webscraper) | Tool to extract datasets from MRC Data Portal | [Eawag] |
-| T3.2 | [Global lake water quality assessment](https://github.com/mibrechb/SOSW_MRC_webscraper) | Notebooks to assess data availability from ESA CCI Lakes and Copernicus LWQ | [Eawag] |
+| T3.2 | [Global lake water quality assessment](# "Not yet available") | Notebooks to assess data availability from ESA CCI Lakes and Copernicus LWQ | [Eawag] |
 
 ## Disclaimer
 Views and opinions expressed are those of the author(s) only and do not necessarily reflect those of the European Union or CINEA. Neither the European Union nor the granting authority can be held responsible for them.
@@ -42,3 +42,4 @@ Views and opinions expressed are those of the author(s) only and do not necessar
     <td>This project has received funding from the European Union’s Horizon Europe research and innovation programme under grant agreement No 101059264.</td>
   </tr>
 </table>
+

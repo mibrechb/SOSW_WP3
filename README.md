@@ -21,8 +21,8 @@ Table 1. Code repositories part of deliverables
 | D3.2 | [EOP2: Lake and River ice mapper](https://github.com/mibrechb/SOSW_EOP2) | EO tool for extraction of ice coverage and phenology | [Eawag] | [📄](# "Not yet available") |
 | D3.2 | [EOP3: Satellite-based altimetry](# "Not yet available")| EO tool for water level estimation | [FutureWater] | [📄](# "Not yet available") |
 | D3.2 | [EOP4: Surface water temperature mapper](https://github.com/mibrechb/SOSW_EOP4) | EO tool for extraction of surface water temperature | [Eawag] | [📄](# "Not yet available") |
-| D3.2 | [EOP5: Crop water productivity mapping](# "Not yet available") | EO tool for estimation of crop water productivity | [FutureWater] | [📄](# "Not yet available") |
-| D3.2 | [EOP6: Snow-water-equivalent downscaling](# "Not yet available") | EO tool for downscaling of SWE | [FutureWater] | [📄](# "Not yet available") |
+| D3.2 | [EOP5: Crop water productivity mapper](https://github.com/FutureWater/SOSW_EOP5) | EO tool for estimation of crop water productivity | [FutureWater] | [📄](# "Not yet available") |
+<!-- | D3.2 | [EOP6: Snow-water-equivalent downscaling](# "Not yet available") | EO tool for downscaling of SWE | [FutureWater] | [📄](# "Not yet available") | -->
 
 <!-- Table 2 -->
 Table 2. Other code repositories part of the project

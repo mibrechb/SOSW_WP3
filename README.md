@@ -1,4 +1,5 @@
 # <img src="imgs/sosw_logo.png" width="80"> SOS-Water - WP3 Earth Observation
+[![DOI](https://img.shields.io/badge/DOI-10.3030%2F101059264-blue)](https://doi.org/10.3030/101059264)
 
 This repository is a collection of the code contributions to the Work Package 3 - Earth Observation of SOS-Water - "Water Resources System Safe Operating Space in a Changing Climate and Society" ([DOI:10.3030/101059264](https://cordis.europa.eu/project/id/101059264)). 
 
